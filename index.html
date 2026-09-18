@@ -1,295 +1,115 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy Active Jobs Portal</title>
-    <style>
-        :root {
-            --primary-color: #1a73e8;
-            --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --border-color: #dadce0;
-            --success-color: #137333;
-            --badge-bg: #e8f0fe;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f0f2f5;
-            color: var(--text-color);
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        header {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        header h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 24px;
-        }
-        header p {
-            color: #666;
-            font-size: 14px;
-        }
-        .search-box {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-        .search-box input {
-            width: 100%;
-            max-width: 500px;
-            padding: 12px 20px;
-            font-size: 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 25px;
-            outline: none;
-            transition: box-shadow 0.3s;
-        }
-        .search-box input:focus {
-            box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
-        }
-        .jobs-grid {
-            display: grid;
-            gap: 15px;
-        }
-        .job-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .job-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .job-title-area h3 {
-            font-size: 18px;
-            color: var(--primary-color);
-            margin-bottom: 4px;
-        }
-        .job-id {
-            font-size: 12px;
-            color: #70757a;
-            font-weight: 600;
-        }
-        .badge {
-            background: var(--badge-bg);
-            color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 650;
-        }
-        .positions-badge {
-            background: #e6f4ea;
-            color: var(--success-color);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 650;
-        }
-        .job-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            font-size: 14px;
-            color: #5f6368;
-            background: var(--secondary-color);
-            padding: 10px 15px;
-            border-radius: 6px;
-        }
-        .job-desc {
-            font-size: 14px;
-            color: #444;
-            line-height: 1.5;
-        }
-        .job-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
-            padding-top: 12px;
-            margin-top: 4px;
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .skill-tag {
-            background: #f1f3f4;
-            color: #3c4043;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-        .apply-btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            text-align: center;
-        }
-        .apply-btn:hover {
-            background-color: #1557b0;
-        }
-        @media (max-width: 600px) {
-            .job-header {
-                flex-direction: column;
-            }
-        }
-    </style>
+
+    <title>TalentConnect Consulting | Recruitment Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<div class="container">
+    <!-- HEADER -->
+
     <header>
-        <h1>TalentConnect Consulting</h1>
-        <p>Active Consultancy Openings</p>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Jobs or Skills..." onkeyup="filterJobs()">
+
+        <div class="header-top">
+
+            <div class="company-logo">
+
+                images/logo.png
+
+                <div>
+                    <h1>TalentConnect Consulting</h1>
+                    <p>Freelancer Recruitment Partner Portal</p>
+                </div>
+
+            </div>
+
         </div>
+
+        <div class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by Job Title, Skills, Location..."
+                onkeyup="filterJobs()">
+
+        </div>
+
     </header>
 
-    <div class="jobs-grid" id="jobsGrid">
-        
-        <!-- Job 1 -->
-        <div class="job-card" data-title="mfcs development consultant oracle retail plsql" data-skills="oracle retail plsql java">
-            <div class="job-header">
-                <div class="job-title-area">
-                    <span class="job-id">Job ID: 2777</span>
-                    <h3>MFCS Development Consultant</h3>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                    <span class="positions-badge">Open Positions: 3</span>
-                    <span class="badge">Active</span>
-                </div>
-            </div>
-            <div class="job-details">
-                <div><strong>Location:</strong> Remote / Any</div>
-                <div><strong>Experience:</strong> 4 - 8 Years</div>
-            </div>
-            <div class="job-desc">
-                <strong>Requirements:</strong> Strong experience in Oracle Retail Merchandising System (MFCS), PL/SQL development, forms, reports, and integration packages.
-            </div>
-            <div class="job-footer">
-                <div class="skills-list">
-                    <span class="skill-tag">Oracle Retail</span>
-                    <span class="skill-tag">PL/SQL</span>
-                    <span class="skill-tag">MFCS</span>
-                </div>
-                <a href="mailto:talentconnectcareers@gmail.com?subject=Candidate Submission for Job ID: 2777 - MFCS Development Consultant" class="apply-btn">Send Candidate CV</a>
-            </div>
+    <!-- STATS -->
+
+    <section class="stats-container">
+
+        <div class="stat-card">
+            <h2 id="activeJobs">0</h2>
+            <p>Active Jobs</p>
         </div>
 
-        <!-- Job 2 -->
-        <div class="job-card" data-title="xstore development consultant pos retail" data-skills="xstore java spring boot pos">
-            <div class="job-header">
-                <div class="job-title-area">
-                    <span class="job-id">Job ID: 2779</span>
-                    <h3>Xstore Development Consultant</h3>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                    <span class="positions-badge">Open Positions: 2</span>
-                    <span class="badge">Active</span>
-                </div>
-            </div>
-            <div class="job-details">
-                <div><strong>Location:</strong> Hybrid / Bangalore</div>
-                <div><strong>Experience:</strong> 5 - 9 Years</div>
-            </div>
-            <div class="job-desc">
-                <strong>Requirements:</strong> Expert in Oracle Xstore POS configuration, customization, Java, Spring Boot, and retail store architecture.
-            </div>
-            <div class="job-footer">
-                <div class="skills-list">
-                    <span class="skill-tag">Xstore POS</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Spring Boot</span>
-                </div>
-                <a href="mailto:talentconnectcareers@gmail.com?subject=Candidate Submission for Job ID: 2779 - Xstore Development Consultant" class="apply-btn">Send Candidate CV</a>
-            </div>
+        <div class="stat-card">
+            <h2 id="totalPositions">0</h2>
+            <p>Open Positions</p>
         </div>
 
-        <!-- Job 3 -->
-        <div class="job-card" data-title="senior sap fico specialist consultant" data-skills="sap fico finance controlling">
-            <div class="job-header">
-                <div class="job-title-area">
-                    <span class="job-id">Job ID: 2770</span>
-                    <h3>Senior SAP FICO Specialist</h3>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                    <span class="positions-badge">Open Positions: 4</span>
-                    <span class="badge">Active</span>
-                </div>
-            </div>
-            <div class="job-details">
-                <div><strong>Location:</strong> Remote</div>
-                <div><strong>Experience:</strong> 8+ Years</div>
-            </div>
-            <div class="job-desc">
-                <strong>Requirements:</strong> Hands-on implementation experience in SAP Finance (FI) and Controlling (CO) modules, general ledger, accounts payable/receivable.
-            </div>
-            <div class="job-footer">
-                <div class="skills-list">
-                    <span class="skill-tag">SAP FICO</span>
-                    <span class="skill-tag">Finance</span>
-                    <span class="skill-tag">Controlling</span>
-                </div>
-                <a href="mailto:talentconnectcareers@gmail.com?subject=Candidate Submission for Job ID: 2770 - Senior SAP FICO Specialist" class="apply-btn">Send Candidate CV</a>
-            </div>
+        <div class="stat-card">
+            <h2 id="totalJobs">0</h2>
+            <p>Total Requirements</p>
         </div>
 
-    </div>
-</div>
+        <div class="stat-card">
+            <h2 id="clientCount">0</h2>
+            <p>Clients</p>
+        </div>
 
-<script>
-function filterJobs() {
-    let input = document.getElementById('searchInput').value.toLowerCase();
-    let cards = document.getElementsByClassName('job-card');
+    </section>
 
-    for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].getAttribute('data-title');
-        let skills = cards[i].getAttribute('data-skills');
-        
-        if (title.includes(input) || skills.includes(input)) {
-            cards[i].style.display = "flex";
-        } else {
-            cards[i].style.display = "none";
-        }
-    }
-}
-</script>
+    <!-- JOBS SECTION -->
+
+    <section>
+
+        <div class="jobs-grid" id="jobsGrid">
+
+            <!-- Jobs Loaded Dynamically -->
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>TalentConnect Consulting</h3>
+
+        <p>
+            Connecting Talent with Opportunity
+        </p>
+
+        <br>
+
+        <p>
+            For candidate submissions, click "Send Candidate CV"
+            on the relevant requirement.
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 TalentConnect Consulting | All Rights Reserved
+        </p>
+
+    </footer>
+
+    script.jsscript>
 
 </body>
+
 </html>
