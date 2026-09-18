@@ -150,9 +150,11 @@ function renderJobs(jobs) {
 
                 </div>
 
-                talentconnectconsulting.hr@gmail.com?subject=Candidate Submission for Job ID ${job.jobId} - ${job.title}
-                    Send Candidate CV
-                </a>
+                <a
+    href="mailto:talentconnectcareers@gmail.com?subject=Candidate Submission for Job ID ${job.jobId} - ${job.title}"
+    class="apply-btn">
+    Send Candidate CV
+</a>
 
             </div>
 
