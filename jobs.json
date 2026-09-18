@@ -1,36 +1,22 @@
 [
   {
-    "jobId": "2777",
-    "title": "MFCS Development Consultant",
-    "location": "Remote / Any",
-    "experience": "4 - 8 Years",
+    "jobId": "TC001",
+    "title": "Senior .NET Developer",
+    "client": "Leading Insurance Client",
+    "location": "Chennai",
+    "experience": "8-12 Years",
+    "budget": "18 LPA",
     "positions": "3",
     "status": "Active",
-    "budget": "18 LPA",
-    "client": "Leading Retail Client",
-    "jobDescription": "Strong experience in Oracle Retail Merchandising System (MFCS), PL/SQL development, forms, reports, and integration packages.",
+    "workMode": "Hybrid",
+    "submissionDeadline": "30-Sep-2026",
+    "jobDescription": "Strong experience in .NET Core, Azure, SQL Server, Web APIs and enterprise application development.",
+    "specialNotes": "Immediate Joiners Preferred",
     "skills": [
-      "Oracle Retail",
-      "PL/SQL",
-      "MFCS"
-    ],
-    "specialNotes": "Immediate Joiners Preferred"
-  },
-  {
-    "jobId": "2779",
-    "title": "Xstore Development Consultant",
-    "location": "Hybrid / Bangalore",
-    "experience": "5 - 9 Years",
-    "positions": "2",
-    "status": "Active",
-    "budget": "22 LPA",
-    "client": "Retail Product Company",
-    "jobDescription": "Expert in Oracle Xstore POS configuration, customization, Java and Spring Boot.",
-    "skills": [
-      "Xstore POS",
-      "Java",
-      "Spring Boot"
-    ],
-    "specialNotes": "Interview Slots Available This Week"
+      ".NET Core",
+      "Azure",
+      "SQL Server",
+      "Web API"
+    ]
   }
 ]
