@@ -1,22 +1,47 @@
 let allJobs = [];
 
 async function loadJobs() {
+try {
 
-    try {
+ 
 
-        const response = await fetch("jobs.json");
+const response = await fetch("jobs.json");
 
-        allJobs = await response.json();
+ 
 
-        renderJobs(allJobs);
+console.log("Response:", response);
 
-        updateDashboard(allJobs);
+ 
+const data = await response.json();
 
-    } catch (error) {
+ 
 
-        console.error("Error loading jobs:", error);
+console.log("Jobs Loaded:", data);
 
-    }
+ 
+
+allJobs = data;
+
+ 
+
+renderJobs(allJobs);
+
+ 
+
+updateDashboard(allJobs);
+
+ 
+
+}
+
+catch(error){
+
+ 
+
+console.error("ERROR LOADING JSON:", error);
+
+}
+
 }
 
 function renderJobs(jobs) {
