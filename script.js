@@ -1,10 +1,22 @@
 let allJobs = [];
 
 async function loadJobs() {
-    const response = await fetch("jobs.json");
-    allJobs = await response.json();
 
-    renderJobs(allJobs);
+    try {
+
+        const response = await fetch("jobs.json");
+
+        allJobs = await response.json();
+
+        renderJobs(allJobs);
+
+        updateDashboard(allJobs);
+
+    } catch (error) {
+
+        console.error("Error loading jobs:", error);
+
+    }
 }
 
 function renderJobs(jobs) {
@@ -18,9 +30,9 @@ function renderJobs(jobs) {
         let skillsHTML = "";
 
         job.skills.forEach(skill => {
-            skillsHTML += `
-                <span class="skill-tag">${skill}</span>
-            `;
+
+            skillsHTML +=
+                `<span class="skill-tag">${skill}</span>`;
         });
 
         container.innerHTML += `
@@ -39,10 +51,10 @@ function renderJobs(jobs) {
 
                 </div>
 
-                <div style="display:flex;gap:8px;">
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
 
                     <span class="positions-badge">
-                        Open Positions: ${job.positions}
+                        Positions: ${job.positions}
                     </span>
 
                     <span class="badge">
@@ -54,6 +66,11 @@ function renderJobs(jobs) {
             </div>
 
             <div class="job-details">
+
+                <div>
+                    <strong>Client:</strong>
+                    ${job.client}
+                </div>
 
                 <div>
                     <strong>Location:</strong>
@@ -71,21 +88,28 @@ function renderJobs(jobs) {
                 </div>
 
                 <div>
-                    <strong>Client:</strong>
-                    ${job.client}
+                    <strong>Work Mode:</strong>
+                    ${job.workMode}
+                </div>
+
+                <div>
+                    <strong>Deadline:</strong>
+                    ${job.submissionDeadline}
                 </div>
 
             </div>
 
             <div class="job-desc">
 
-                <strong>Job Description:</strong>
+                <strong>Job Description</strong>
+
+                <br><br>
 
                 ${job.jobDescription}
 
             </div>
 
-            <div class="job-desc">
+            <div class="special-note">
 
                 <strong>Special Notes:</strong>
 
@@ -101,10 +125,8 @@ function renderJobs(jobs) {
 
                 </div>
 
-                talentconnectconsulting.hr@gmail.com?subject=Candidate Submission for ${job.jobId}
-
+                talentconnectconsulting.hr@gmail.com?subject=Candidate Submission for Job ID ${job.jobId} - ${job.title}
                     Send Candidate CV
-
                 </a>
 
             </div>
@@ -113,30 +135,62 @@ function renderJobs(jobs) {
 
         `;
     });
+
 }
 
-function filterJobs(){
+function updateDashboard(jobs) {
 
-    let searchText =
-        document.getElementById('searchInput')
-        .value
-        .toLowerCase();
+    const activeJobs =
+        jobs.filter(j => j.status.toLowerCase() === "active").length;
 
-    let filtered = allJobs.filter(job =>
+    const totalPositions =
+        jobs.reduce((sum, j) =>
+            sum + parseInt(j.positions || 0), 0);
 
-        job.title.toLowerCase().includes(searchText)
+    const clients =
+        [...new Set(jobs.map(j => j.client))];
 
-        ||
+    document.getElementById("activeJobs").innerText =
+        activeJobs;
 
-        job.skills.join(" ").toLowerCase().includes(searchText)
+    document.getElementById("totalPositions").innerText =
+        totalPositions;
 
-        ||
+    document.getElementById("totalJobs").innerText =
+        jobs.length;
 
-        job.location.toLowerCase().includes(searchText)
+    document.getElementById("clientCount").innerText =
+        clients.length;
+}
 
-    );
+function filterJobs() {
 
-    renderJobs(filtered);
+    const searchText =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+    const filteredJobs =
+        allJobs.filter(job =>
+
+            job.title.toLowerCase().includes(searchText)
+
+            ||
+
+            job.location.toLowerCase().includes(searchText)
+
+            ||
+
+            job.skills.join(" ").toLowerCase().includes(searchText)
+
+            ||
+
+            job.client.toLowerCase().includes(searchText)
+
+        );
+
+    renderJobs(filteredJobs);
 }
 
 loadJobs();
